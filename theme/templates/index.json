@@ -1,0 +1,206 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "social_proof_text": "Trusted by 50,000+ happy customers",
+        "heading": "<p>Elevate your daily rituals with Lumina.</p>",
+        "accent_word": "rituals",
+        "subheading": "Premium essentials designed for the modern lifestyle. Sustainably sourced, meticulously crafted, and delivered straight to your door.",
+        "primary_button_label": "Shop the Collection",
+        "secondary_button_label": "Learn Our Story",
+        "stat_1_value": "4.9/5",
+        "stat_1_label": "Average Rating",
+        "stat_2_value": "100%",
+        "stat_2_label": "Carbon Neutral",
+        "badge_title": "New Arrival",
+        "badge_text": "The Obsidian Series is now available for early access."
+      }
+    },
+    "social-proof": {
+      "type": "social-proof-strip",
+      "block_order": ["avatar-1", "avatar-2", "avatar-3", "avatar-4", "press-1", "press-2", "press-3", "press-4", "press-5"],
+      "blocks": {
+        "avatar-1": { "type": "avatar", "settings": {} },
+        "avatar-2": { "type": "avatar", "settings": {} },
+        "avatar-3": { "type": "avatar", "settings": {} },
+        "avatar-4": { "type": "avatar", "settings": {} },
+        "press-1": { "type": "press_logo", "settings": { "name": "VOGUE" } },
+        "press-2": { "type": "press_logo", "settings": { "name": "Forbes" } },
+        "press-3": { "type": "press_logo", "settings": { "name": "GQ" } },
+        "press-4": { "type": "press_logo", "settings": { "name": "WIRED" } },
+        "press-5": { "type": "press_logo", "settings": { "name": "Esquire" } }
+      },
+      "settings": {
+        "customer_count_text": "Loved by 50,000+",
+        "customer_subtitle": "Verified customers worldwide"
+      }
+    },
+    "featured-collection": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Featured Collection",
+        "subheading": "Our most-loved pieces, curated for you.",
+        "product_limit": 4,
+        "show_view_all": true
+      }
+    },
+    "benefits": {
+      "type": "benefits",
+      "block_order": ["benefit-1", "benefit-2", "benefit-3", "benefit-4"],
+      "blocks": {
+        "benefit-1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "truck",
+            "title": "Fast & Free Shipping",
+            "description": "Free express delivery on all orders over $100. Delivered in 2-3 business days."
+          }
+        },
+        "benefit-2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shield",
+            "title": "Lifetime Guarantee",
+            "description": "We stand by our quality. If it breaks, we'll fix it or replace it, no questions asked."
+          }
+        },
+        "benefit-3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "refresh",
+            "title": "Easy 60-Day Returns",
+            "description": "Not quite right? Return your items within 60 days for a full refund or exchange."
+          }
+        },
+        "benefit-4": {
+          "type": "benefit",
+          "settings": {
+            "icon": "leaf",
+            "title": "Ethically Sourced",
+            "description": "100% sustainable materials and fair wages for all our craftspeople."
+          }
+        }
+      },
+      "settings": {
+        "heading": "Why People Choose Lumina",
+        "subheading": "We've obsessed over every detail to ensure you get the best experience possible."
+      }
+    },
+    "hero-product": {
+      "type": "hero-product",
+      "block_order": ["feature-1", "feature-2", "feature-3", "feature-4"],
+      "blocks": {
+        "feature-1": { "type": "feature", "settings": { "text": "40-hour battery life with fast charging" } },
+        "feature-2": { "type": "feature", "settings": { "text": "Advanced active noise cancellation" } },
+        "feature-3": { "type": "feature", "settings": { "text": "Sustainable vegan leather ear pads" } },
+        "feature-4": { "type": "feature", "settings": { "text": "Custom-tuned 40mm drivers" } }
+      },
+      "settings": {
+        "badge_label": "Bestseller",
+        "eyebrow": "The Hero Piece",
+        "title": "Sound Reimagined: The Lumina Studio Pro",
+        "description": "Experience audio like never before. Our flagship headphones combine studio-grade sound with all-day comfort and industry-leading noise cancellation.",
+        "button_label": "Shop Studio Pro",
+        "price": "$349",
+        "payment_plan": "Or 4 payments of $87.25"
+      }
+    },
+    "stats": {
+      "type": "stats",
+      "block_order": ["stat-1", "stat-2", "stat-3", "stat-4"],
+      "blocks": {
+        "stat-1": { "type": "stat", "settings": { "value": "98%", "label": "Customer Satisfaction" } },
+        "stat-2": { "type": "stat", "settings": { "value": "1.2M+", "label": "Products Delivered" } },
+        "stat-3": { "type": "stat", "settings": { "value": "24/7", "label": "Expert Support" } },
+        "stat-4": { "type": "stat", "settings": { "value": "0", "label": "Hidden Fees" } }
+      },
+      "settings": {}
+    },
+    "ugc": {
+      "type": "ugc",
+      "block_order": ["photo-1", "photo-2", "photo-3", "photo-4", "photo-5", "photo-6"],
+      "blocks": {
+        "photo-1": { "type": "photo", "settings": {} },
+        "photo-2": { "type": "photo", "settings": {} },
+        "photo-3": { "type": "photo", "settings": {} },
+        "photo-4": { "type": "photo", "settings": {} },
+        "photo-5": { "type": "photo", "settings": {} },
+        "photo-6": { "type": "photo", "settings": {} }
+      },
+      "settings": {
+        "heading": "Lumina in the Wild",
+        "subheading": "Tag us @lumina_essentials to be featured."
+      }
+    },
+    "reviews": {
+      "type": "reviews",
+      "block_order": ["review-1", "review-2", "review-3"],
+      "blocks": {
+        "review-1": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "text": "The quality is absolutely unmatched. I've tried many DTC brands, but Lumina is in a league of its own. The attention to detail is incredible.",
+            "author": "Sarah Jenkins",
+            "date": "2 weeks ago"
+          }
+        },
+        "review-2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "text": "Fast shipping and even better customer service. I had a small issue with my order and they resolved it within an hour. Highly recommend!",
+            "author": "Michael Chen",
+            "date": "1 month ago"
+          }
+        },
+        "review-3": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "text": "Beautifully packaged and the product itself exceeded my expectations. It's rare to find a brand that actually delivers on its promises.",
+            "author": "Emma Wilson",
+            "date": "3 days ago"
+          }
+        }
+      },
+      "settings": {
+        "heading": "What Our Community Says",
+        "rating_summary": "4.9/5 Based on 12,400+ reviews"
+      }
+    },
+    "trust": {
+      "type": "trust-section",
+      "block_order": ["trust-1", "trust-2", "trust-3", "trust-4"],
+      "blocks": {
+        "trust-1": { "type": "trust_item", "settings": { "icon": "truck", "title": "Free Shipping", "description": "On all orders over $100" } },
+        "trust-2": { "type": "trust_item", "settings": { "icon": "refresh", "title": "Easy Returns", "description": "60-day money back guarantee" } },
+        "trust-3": { "type": "trust_item", "settings": { "icon": "shield", "title": "Secure Payment", "description": "100% protected checkout" } },
+        "trust-4": { "type": "trust_item", "settings": { "icon": "headphones", "title": "24/7 Support", "description": "Dedicated expert assistance" } }
+      },
+      "settings": {}
+    },
+    "cta": {
+      "type": "cta-section",
+      "settings": {
+        "heading": "Ready to elevate your everyday?",
+        "subheading": "Join 50,000+ others who have upgraded their lifestyle with Lumina. Risk-free 60-day trial on all orders.",
+        "button_label": "Shop All Products",
+        "footnote": "Free shipping on orders $100+"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "social-proof",
+    "featured-collection",
+    "benefits",
+    "hero-product",
+    "stats",
+    "ugc",
+    "reviews",
+    "trust",
+    "cta"
+  ]
+}

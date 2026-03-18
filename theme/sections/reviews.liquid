@@ -1,0 +1,130 @@
+<section class="reviews-section">
+  <div class="container">
+
+    <div class="reviews-header">
+      <h2 class="section-title">{{ section.settings.heading }}</h2>
+      <div class="reviews-rating">
+        <span class="star-row" aria-hidden="true">
+          {%- for i in (1..5) -%}
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          {%- endfor -%}
+        </span>
+        <span class="reviews-rating-text">{{ section.settings.rating_summary }}</span>
+      </div>
+    </div>
+
+    <div class="reviews-grid">
+      {%- for block in section.blocks -%}
+        <div class="review-card" {{ block.shopify_attributes }}>
+          <div class="review-quote-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+          </div>
+
+          <div class="review-stars" aria-label="{{ block.settings.rating }} stars">
+            {%- for i in (1..block.settings.rating) -%}
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            {%- endfor -%}
+          </div>
+
+          <p class="review-text">"{{ block.settings.text }}"</p>
+
+          <div class="review-footer">
+            <span class="review-author">{{ block.settings.author }}</span>
+            <span class="review-date">{{ block.settings.date }}</span>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Reviews",
+  "max_blocks": 9,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What Our Community Says"
+    },
+    {
+      "type": "text",
+      "id": "rating_summary",
+      "label": "Rating summary",
+      "default": "4.9/5 Based on 12,400+ reviews"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Review text",
+          "default": "The quality is absolutely unmatched. I've tried many brands, but this one is in a league of its own."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author name",
+          "default": "Happy Customer"
+        },
+        {
+          "type": "text",
+          "id": "date",
+          "label": "Date",
+          "default": "2 weeks ago"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Reviews",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "text": "The quality is absolutely unmatched. I've tried many DTC brands, but Lumina is in a league of its own. The attention to detail is incredible.",
+            "author": "Sarah Jenkins",
+            "date": "2 weeks ago"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "text": "Fast shipping and even better customer service. I had a small issue with my order and they resolved it within an hour. Highly recommend!",
+            "author": "Michael Chen",
+            "date": "1 month ago"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "text": "Beautifully packaged and the product itself exceeded my expectations. It's rare to find a brand that actually delivers on its promises.",
+            "author": "Emma Wilson",
+            "date": "3 days ago"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

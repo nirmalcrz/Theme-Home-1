@@ -1,0 +1,127 @@
+{%- assign collection = collections[section.settings.collection] -%}
+{%- assign product_limit = section.settings.product_limit | default: 4 -%}
+
+<section class="featured-collection">
+  <div class="container">
+
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">{{ section.settings.heading }}</h2>
+        <p class="section-subtitle">{{ section.settings.subheading }}</p>
+      </div>
+      {%- if section.settings.show_view_all and collection != blank -%}
+        <a href="{{ collection.url }}" class="view-all-link">View All Products</a>
+      {%- endif -%}
+    </div>
+
+    <div class="products-grid">
+      {%- if collection != blank and collection.products_count > 0 -%}
+        {%- for product in collection.products limit: product_limit -%}
+          <div class="product-card">
+            <div class="product-card-image">
+              {%- if product.featured_image -%}
+                <a href="{{ product.url }}">
+                  {{ product.featured_image | image_url: width: 600 | image_tag: alt: product.title, loading: 'lazy' }}
+                </a>
+              {%- else -%}
+                {{ 'product-1' | placeholder_svg_tag }}
+              {%- endif -%}
+
+              <button class="product-card-wishlist" aria-label="Add to wishlist">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </button>
+
+              <div class="product-card-add">
+                <button class="quick-add-btn" data-product-id="{{ product.id }}">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                  Quick Add
+                </button>
+              </div>
+            </div>
+
+            <div class="product-card-body">
+              {%- if product.type != blank -%}
+                <p class="product-card-category">{{ product.type }}</p>
+              {%- endif -%}
+              <h3 class="product-card-name">
+                <a href="{{ product.url }}">{{ product.title }}</a>
+              </h3>
+              {%- if product.metafields.custom.benefit != blank -%}
+                <p class="product-card-benefit">{{ product.metafields.custom.benefit }}</p>
+              {%- elsif product.description != blank -%}
+                <p class="product-card-benefit">{{ product.description | strip_html | truncate: 60 }}</p>
+              {%- endif -%}
+              <p class="product-card-price">{{ product.price | money }}</p>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for i in (1..4) -%}
+          <div class="product-card">
+            <div class="product-card-image">
+              {{ 'product-' | append: i | placeholder_svg_tag }}
+            </div>
+            <div class="product-card-body">
+              <p class="product-card-category">Category</p>
+              <h3 class="product-card-name">Sample Product {{ i }}</h3>
+              <p class="product-card-benefit">Premium quality for every occasion</p>
+              <p class="product-card-price">$99.00</p>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.show_view_all and collection != blank -%}
+      <div class="view-all-mobile">
+        <a href="{{ collection.url }}" class="btn-outline">View All Products</a>
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Featured Collection"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Our most-loved pieces, curated for you."
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "product_limit",
+      "label": "Number of products",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show 'View All' link",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Collection"
+    }
+  ]
+}
+{% endschema %}

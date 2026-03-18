@@ -1,0 +1,59 @@
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-card">
+      <h2 class="cta-title">{{ section.settings.heading }}</h2>
+      <p class="cta-desc">{{ section.settings.subheading }}</p>
+      <div class="cta-actions">
+        <a href="{{ section.settings.button_link }}" class="btn-cta">
+          {{ section.settings.button_label }}
+          <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        {%- if section.settings.footnote != blank -%}
+          <p class="cta-footnote">{{ section.settings.footnote }}</p>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CTA Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Ready to elevate your everyday?"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Join 50,000+ others who have upgraded their lifestyle. Risk-free 60-day trial on all orders."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Shop All Products"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "text",
+      "id": "footnote",
+      "label": "Footnote text",
+      "default": "Free shipping on orders $100+"
+    }
+  ],
+  "presets": [
+    {
+      "name": "CTA Section"
+    }
+  ]
+}
+{% endschema %}

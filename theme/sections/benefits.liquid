@@ -1,0 +1,131 @@
+<section class="benefits-section">
+  <div class="container">
+
+    <div class="section-center">
+      <h2 class="section-title">{{ section.settings.heading }}</h2>
+      <p class="section-subtitle">{{ section.settings.subheading }}</p>
+    </div>
+
+    <div class="benefits-grid">
+      {%- for block in section.blocks -%}
+        <div class="benefit-item" {{ block.shopify_attributes }}>
+          <div class="benefit-icon" aria-hidden="true">
+            {%- case block.settings.icon -%}
+              {%- when 'truck' -%}
+                <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              {%- when 'shield' -%}
+                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+              {%- when 'refresh' -%}
+                <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+              {%- when 'leaf' -%}
+                <svg viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 19.34"/><path d="M21 3L3 20"/><path d="M21 3C21 3 12.5 0.5 8 8C6.5 10.5 5.5 14 3.82 19.34"/></svg>
+              {%- when 'star' -%}
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              {%- when 'heart' -%}
+                <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              {%- else -%}
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            {%- endcase -%}
+          </div>
+          <h3 class="benefit-title">{{ block.settings.title }}</h3>
+          <p class="benefit-desc">{{ block.settings.description }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Benefits",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why People Choose Us"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "We've obsessed over every detail to ensure you get the best experience possible."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "truck", "label": "Truck / Shipping" },
+            { "value": "shield", "label": "Shield / Security" },
+            { "value": "refresh", "label": "Refresh / Returns" },
+            { "value": "leaf", "label": "Leaf / Eco" },
+            { "value": "star", "label": "Star" },
+            { "value": "heart", "label": "Heart" }
+          ],
+          "default": "truck"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Fast & Free Shipping"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Free express delivery on all orders over $100. Delivered in 2-3 business days."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Benefits",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "truck",
+            "title": "Fast & Free Shipping",
+            "description": "Free express delivery on all orders over $100. Delivered in 2-3 business days."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "shield",
+            "title": "Lifetime Guarantee",
+            "description": "We stand by our quality. If it breaks, we'll fix it or replace it, no questions asked."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "refresh",
+            "title": "Easy 60-Day Returns",
+            "description": "Not quite right? Return your items within 60 days for a full refund or exchange."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "leaf",
+            "title": "Ethically Sourced",
+            "description": "100% sustainable materials and fair wages for all our craftspeople."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

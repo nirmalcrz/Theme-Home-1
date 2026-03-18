@@ -1,0 +1,166 @@
+{%- assign featured_product = all_products[section.settings.product] -%}
+
+<section class="hero-product-section">
+  <div class="container">
+    <div class="hero-product-card">
+
+      <div class="hero-product-image">
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 1000 | image_tag: alt: section.settings.image_alt, loading: 'lazy' }}
+        {%- elsif featured_product != blank and featured_product.featured_image -%}
+          {{ featured_product.featured_image | image_url: width: 1000 | image_tag: alt: featured_product.title, loading: 'lazy' }}
+        {%- else -%}
+          {{ 'product-2' | placeholder_svg_tag }}
+        {%- endif -%}
+        {%- if section.settings.badge_label != blank -%}
+          <span class="hero-product-badge">{{ section.settings.badge_label }}</span>
+        {%- endif -%}
+      </div>
+
+      <div class="hero-product-body">
+        <p class="hero-product-eyebrow">{{ section.settings.eyebrow }}</p>
+        <h2 class="hero-product-title">{{ section.settings.title }}</h2>
+        <p class="hero-product-desc">{{ section.settings.description }}</p>
+
+        <ul class="hero-product-features">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'feature' -%}
+              <li {{ block.shopify_attributes }}>
+                <span class="check-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </span>
+                {{ block.settings.text }}
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+
+        <div class="hero-product-cta">
+          {%- if featured_product != blank -%}
+            <a href="{{ featured_product.url }}" class="btn-dark">
+              {{ section.settings.button_label }}
+              <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <div class="hero-product-price">
+              <p>{{ featured_product.price | money }}</p>
+              {%- if section.settings.payment_plan != blank -%}
+                <p>{{ section.settings.payment_plan }}</p>
+              {%- endif -%}
+            </div>
+          {%- else -%}
+            <a href="{{ section.settings.button_link }}" class="btn-dark">
+              {{ section.settings.button_label }}
+              <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            {%- if section.settings.price != blank -%}
+              <div class="hero-product-price">
+                <p>{{ section.settings.price }}</p>
+                {%- if section.settings.payment_plan != blank -%}
+                  <p>{{ section.settings.payment_plan }}</p>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Product",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product (overrides manual settings)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Custom image (if no product selected)"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alt text",
+      "default": "Bestseller product"
+    },
+    {
+      "type": "text",
+      "id": "badge_label",
+      "label": "Badge label",
+      "default": "Bestseller"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "The Hero Piece"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Sound Reimagined: The Lumina Studio Pro"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Experience audio like never before. Our flagship headphones combine studio-grade sound with all-day comfort and industry-leading noise cancellation."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link (if no product selected)"
+    },
+    {
+      "type": "text",
+      "id": "price",
+      "label": "Price (if no product selected)",
+      "default": "$349"
+    },
+    {
+      "type": "text",
+      "id": "payment_plan",
+      "label": "Payment plan text",
+      "default": "Or 4 payments of $87.25"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Feature text",
+          "default": "40-hour battery life with fast charging"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Product",
+      "blocks": [
+        { "type": "feature", "settings": { "text": "40-hour battery life with fast charging" } },
+        { "type": "feature", "settings": { "text": "Advanced active noise cancellation" } },
+        { "type": "feature", "settings": { "text": "Sustainable vegan leather ear pads" } },
+        { "type": "feature", "settings": { "text": "Custom-tuned 40mm drivers" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

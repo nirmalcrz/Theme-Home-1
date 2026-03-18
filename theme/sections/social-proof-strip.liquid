@@ -1,0 +1,95 @@
+<div class="social-proof-strip">
+  <div class="container">
+    <div class="social-proof-inner">
+
+      <div class="avatar-group">
+        <div class="avatar-stack">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'avatar' -%}
+              {%- if block.settings.image != blank -%}
+                {{ block.settings.image | image_url: width: 100 | image_tag: alt: 'Customer', loading: 'lazy' }}
+              {%- else -%}
+                <img src="https://i.pravatar.cc/100?img={{ forloop.index | plus: 10 }}" alt="Customer" width="40" height="40" loading="lazy" referrerpolicy="no-referrer">
+              {%- endif -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+        <div class="avatar-text">
+          <p>{{ section.settings.customer_count_text }}</p>
+          <p>{{ section.settings.customer_subtitle }}</p>
+        </div>
+      </div>
+
+      <div class="press-logos" aria-label="As featured in">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'press_logo' -%}
+            <span class="press-logo">{{ block.settings.name }}</span>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Social Proof Strip",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "text",
+      "id": "customer_count_text",
+      "label": "Customer count text",
+      "default": "Loved by 50,000+"
+    },
+    {
+      "type": "text",
+      "id": "customer_subtitle",
+      "label": "Customer subtitle",
+      "default": "Verified customers worldwide"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "avatar",
+      "name": "Avatar",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Customer photo"
+        }
+      ]
+    },
+    {
+      "type": "press_logo",
+      "name": "Press Logo",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Publication name",
+          "default": "VOGUE"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Social Proof Strip",
+      "blocks": [
+        { "type": "avatar" },
+        { "type": "avatar" },
+        { "type": "avatar" },
+        { "type": "avatar" },
+        { "type": "press_logo", "settings": { "name": "VOGUE" } },
+        { "type": "press_logo", "settings": { "name": "Forbes" } },
+        { "type": "press_logo", "settings": { "name": "GQ" } },
+        { "type": "press_logo", "settings": { "name": "WIRED" } },
+        { "type": "press_logo", "settings": { "name": "Esquire" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

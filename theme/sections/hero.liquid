@@ -1,0 +1,171 @@
+<section class="hero-section">
+  <div class="container">
+    <div class="hero-grid">
+
+      <div class="hero-content">
+        <div class="hero-stars">
+          <span class="star-row" aria-hidden="true">
+            {%- for i in (1..5) -%}
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            {%- endfor -%}
+          </span>
+          <span class="hero-stars-text">{{ section.settings.social_proof_text }}</span>
+        </div>
+
+        {%- assign accent_wrapped = '<span class="accent">' | append: section.settings.accent_word | append: '</span>' -%}
+        <h1 class="hero-title">
+          {{ section.settings.heading | replace: section.settings.accent_word, accent_wrapped }}
+        </h1>
+
+        <p class="hero-desc">{{ section.settings.subheading }}</p>
+
+        <div class="hero-buttons">
+          <a href="{{ section.settings.primary_button_link }}" class="btn-primary">
+            {{ section.settings.primary_button_label }}
+            <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="{{ section.settings.secondary_button_link }}" class="btn-secondary">
+            {{ section.settings.secondary_button_label }}
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <p>{{ section.settings.stat_1_value }}</p>
+            <p>{{ section.settings.stat_1_label }}</p>
+          </div>
+          <div class="hero-stat-divider" aria-hidden="true"></div>
+          <div class="hero-stat">
+            <p>{{ section.settings.stat_2_value }}</p>
+            <p>{{ section.settings.stat_2_label }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-image-wrap">
+        <div class="hero-image-ratio">
+          {%- if section.settings.image != blank -%}
+            {{ section.settings.image | image_url: width: 1000 | image_tag: alt: section.settings.image_alt, loading: 'eager' }}
+          {%- else -%}
+            {{ 'product-1' | placeholder_svg_tag }}
+          {%- endif -%}
+        </div>
+
+        {%- if section.settings.badge_text != blank -%}
+          <div class="hero-badge">
+            <p>{{ section.settings.badge_title }}</p>
+            <p>{{ section.settings.badge_text }}</p>
+          </div>
+        {%- endif -%}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alt text",
+      "default": "Hero product"
+    },
+    {
+      "type": "text",
+      "id": "social_proof_text",
+      "label": "Social proof text",
+      "default": "Trusted by 50,000+ happy customers"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Elevate your daily rituals with Lumina.</p>"
+    },
+    {
+      "type": "text",
+      "id": "accent_word",
+      "label": "Accent word in heading",
+      "default": "rituals",
+      "info": "This word will be highlighted in the accent color."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Premium essentials designed for the modern lifestyle. Sustainably sourced, meticulously crafted, and delivered straight to your door."
+    },
+    {
+      "type": "text",
+      "id": "primary_button_label",
+      "label": "Primary button label",
+      "default": "Shop the Collection"
+    },
+    {
+      "type": "url",
+      "id": "primary_button_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_button_label",
+      "label": "Secondary button label",
+      "default": "Learn Our Story"
+    },
+    {
+      "type": "url",
+      "id": "secondary_button_link",
+      "label": "Secondary button link"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_value",
+      "label": "Stat 1 value",
+      "default": "4.9/5"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_label",
+      "label": "Stat 1 label",
+      "default": "Average Rating"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_value",
+      "label": "Stat 2 value",
+      "default": "100%"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_label",
+      "label": "Stat 2 label",
+      "default": "Carbon Neutral"
+    },
+    {
+      "type": "text",
+      "id": "badge_title",
+      "label": "Badge title",
+      "default": "New Arrival"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "The Obsidian Series is now available for early access."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero"
+    }
+  ]
+}
+{% endschema %}

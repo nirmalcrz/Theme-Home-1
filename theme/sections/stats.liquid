@@ -1,0 +1,51 @@
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      {%- for block in section.blocks -%}
+        <div class="stat-item" {{ block.shopify_attributes }}>
+          <p class="stat-value">{{ block.settings.value }}</p>
+          <p class="stat-label">{{ block.settings.label }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Stats Bar",
+  "max_blocks": 6,
+  "settings": [],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value",
+          "default": "98%"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Customer Satisfaction"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Stats Bar",
+      "blocks": [
+        { "type": "stat", "settings": { "value": "98%", "label": "Customer Satisfaction" } },
+        { "type": "stat", "settings": { "value": "1.2M+", "label": "Products Delivered" } },
+        { "type": "stat", "settings": { "value": "24/7", "label": "Expert Support" } },
+        { "type": "stat", "settings": { "value": "0", "label": "Hidden Fees" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,12 @@
+{
+  "current": {
+    "color_primary": "#0f172a",
+    "color_secondary": "#64748b",
+    "color_accent": "#6366f1",
+    "color_highlight": "#f59e0b",
+    "color_bg": "#f8fafc",
+    "color_border": "#e2e8f0",
+    "font_size_base": 16
+  },
+  "presets": {}
+}
